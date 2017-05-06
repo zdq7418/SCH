@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="sms@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="sms">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="lw_opt_class"/>
+    <table id="8" parent="2" name="lw_opt_credit"/>
+    <table id="9" parent="2" name="lw_opt_curriculum"/>
+    <table id="10" parent="2" name="lw_opt_curriculum_students"/>
+    <table id="11" parent="2" name="lw_opt_department"/>
+    <table id="12" parent="2" name="lw_opt_floor"/>
+    <table id="13" parent="2" name="lw_opt_fraction"/>
+    <table id="14" parent="2" name="lw_opt_login"/>
+    <table id="15" parent="2" name="lw_opt_mansion"/>
+    <table id="16" parent="2" name="lw_opt_personnel"/>
+    <table id="17" parent="2" name="lw_opt_personnel_class"/>
+    <table id="18" parent="2" name="lw_opt_personnel_role"/>
+    <table id="19" parent="2" name="lw_opt_resource"/>
+    <table id="20" parent="2" name="lw_opt_role"/>
+    <table id="21" parent="2" name="lw_opt_role_resource"/>
+    <table id="22" parent="2" name="lw_opt_room"/>
+    <column id="23" parent="7" name="class_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="7" name="class_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="25" parent="7" name="class_department">
+      <Position>3</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="26" parent="7" name="class_number">
+      <Position>4</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <key id="27" parent="7" name="PRIMARY">
+      <ColNames>class_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="8" name="credit_id">
+      <Position>1</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="8" name="credit_record">
+      <Position>2</Position>
+      <DataType>double(16,2)|0</DataType>
+    </column>
+    <column id="30" parent="8" name="credit_source">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="personnel_id">
+      <Position>4</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <index id="32" parent="8" name="kp_lw_opt_credit">
+      <ColNames>personnel_id</ColNames>
+    </index>
+    <key id="33" parent="8" name="PRIMARY">
+      <ColNames>credit_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="8" name="kp_lw_opt_credit">
+      <ColNames>personnel_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_personnel</RefTableName>
+      <RefColNames>personnel_id</RefColNames>
+    </foreign-key>
+    <column id="35" parent="9" name="curriculum_id">
+      <Position>1</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="9" name="curriculum_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="37" parent="9" name="curriculum_credit">
+      <Position>3</Position>
+      <DataType>double(16,2)|0</DataType>
+    </column>
+    <key id="38" parent="9" name="PRIMARY">
+      <ColNames>curriculum_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="10" name="curriculum_id">
+      <Position>3</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="10" name="curriculum_personnel_id">
+      <Position>1</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="10" name="personnel_id">
+      <Position>2</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="42" parent="10" name="kp_lw_opt_curriculum_students1">
+      <ColNames>personnel_id</ColNames>
+    </index>
+    <index id="43" parent="10" name="kp_lw_opt_curriculum_students2">
+      <ColNames>curriculum_id</ColNames>
+    </index>
+    <key id="44" parent="10" name="PRIMARY">
+      <ColNames>curriculum_personnel_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="10" name="kp_lw_opt_curriculum_students1">
+      <ColNames>personnel_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_personnel</RefTableName>
+      <RefColNames>personnel_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="10" name="kp_lw_opt_curriculum_students2">
+      <ColNames>curriculum_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_curriculum</RefTableName>
+      <RefColNames>curriculum_id</RefColNames>
+    </foreign-key>
+    <column id="47" parent="11" name="department_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="11" name="department_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="49" parent="11" name="PRIMARY">
+      <ColNames>department_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="12" name="floor_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="12" name="floor_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="52" parent="12" name="room_id">
+      <Position>3</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="53" parent="12" name="floor_introduce">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="54" parent="12" name="PRIMARY">
+      <ColNames>floor_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="13" name="fraction_id">
+      <Position>1</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="13" name="Subject_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="57" parent="13" name="Subject_fraction">
+      <Position>3</Position>
+      <DataType>double(16,2)|0</DataType>
+    </column>
+    <column id="58" parent="13" name="personnel_id">
+      <Position>4</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <index id="59" parent="13" name="kp_lw_opt_fraction">
+      <ColNames>personnel_id</ColNames>
+    </index>
+    <key id="60" parent="13" name="PRIMARY">
+      <ColNames>fraction_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="13" name="kp_lw_opt_fraction">
+      <ColNames>personnel_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_personnel</RefTableName>
+      <RefColNames>personnel_id</RefColNames>
+    </foreign-key>
+    <column id="62" parent="14" name="login_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="14" name="login_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="64" parent="14" name="login_paw">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="65" parent="14" name="create_date">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="66" parent="14" name="create_by">
+      <Position>6</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="67" parent="14" name="is_use">
+      <Position>7</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="68" parent="14" name="per_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="69" parent="14" name="PRIMARY">
+      <ColNames>login_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="70" parent="15" name="mansion_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="15" name="mansion_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="72" parent="15" name="floor_id">
+      <Position>3</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="73" parent="15" name="mansion_introduce">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="74" parent="15" name="PRIMARY">
+      <ColNames>mansion_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="16" name="personnel_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="76" parent="16" name="personnel_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="77" parent="16" name="personnel_sex">
+      <Position>3</Position>
+      <DataType>varchar(2)|0</DataType>
+    </column>
+    <column id="78" parent="16" name="induction_date">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="79" parent="16" name="personnel_position">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="80" parent="16" name="room_id">
+      <Position>6</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="81" parent="16" name="is_use">
+      <Position>7</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="82" parent="16" name="is_teacher">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="83" parent="16" name="PRIMARY">
+      <ColNames>personnel_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="84" parent="17" name="class_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="85" parent="17" name="personnel_id">
+      <Position>2</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <index id="86" parent="17" name="kp_lw_opt_personnel_class1">
+      <ColNames>class_id</ColNames>
+    </index>
+    <index id="87" parent="17" name="kp_lw_opt_personnel_class2">
+      <ColNames>personnel_id</ColNames>
+    </index>
+    <foreign-key id="88" parent="17" name="kp_lw_opt_personnel_class1">
+      <ColNames>class_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_class</RefTableName>
+      <RefColNames>class_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="89" parent="17" name="kp_lw_opt_personnel_class2">
+      <ColNames>personnel_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_personnel</RefTableName>
+      <RefColNames>personnel_id</RefColNames>
+    </foreign-key>
+    <column id="90" parent="18" name="personnel_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="18" name="role_id">
+      <Position>2</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="92" parent="18" name="kp_personnel_id">
+      <ColNames>personnel_id</ColNames>
+    </index>
+    <index id="93" parent="18" name="kp_role_id">
+      <ColNames>role_id</ColNames>
+    </index>
+    <foreign-key id="94" parent="18" name="kp_personnel_id">
+      <ColNames>personnel_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_personnel</RefTableName>
+      <RefColNames>personnel_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="95" parent="18" name="kp_role_id">
+      <ColNames>role_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_role</RefTableName>
+      <RefColNames>role_id</RefColNames>
+    </foreign-key>
+    <column id="96" parent="19" name="resource_id">
+      <Position>1</Position>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="97" parent="19" name="resource_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="98" parent="19" name="resource_parent">
+      <Position>3</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="99" parent="19" name="resource_path">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="100" parent="19" name="PRIMARY">
+      <ColNames>resource_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="101" parent="20" name="role_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="102" parent="20" name="role_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="103" parent="20" name="role_introduce">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="104" parent="20" name="PRIMARY">
+      <ColNames>role_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="105" parent="21" name="role_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="21" name="resource_id">
+      <Position>2</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="107" parent="21" name="kp_lw_opt_role_resource1">
+      <ColNames>role_id</ColNames>
+    </index>
+    <index id="108" parent="21" name="kp_lw_opt_role_resource2">
+      <ColNames>resource_id</ColNames>
+    </index>
+    <foreign-key id="109" parent="21" name="kp_lw_opt_role_resource1">
+      <ColNames>role_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_role</RefTableName>
+      <RefColNames>role_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="110" parent="21" name="kp_lw_opt_role_resource2">
+      <ColNames>resource_id</ColNames>
+      <RefSchemaName>sms</RefSchemaName>
+      <RefTableName>lw_opt_resource</RefTableName>
+      <RefColNames>resource_id</RefColNames>
+    </foreign-key>
+    <column id="111" parent="22" name="room_id">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="112" parent="22" name="room_no">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="113" parent="22" name="max_number">
+      <Position>3</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <column id="114" parent="22" name="min_number">
+      <Position>4</Position>
+      <DataType>int(4)|0</DataType>
+    </column>
+    <key id="115" parent="22" name="PRIMARY">
+      <ColNames>room_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
