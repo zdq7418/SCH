@@ -9,6 +9,15 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <%--<script type="text/javascript" src="js/bootstrap-table.js"></script>--%>
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -24,51 +33,38 @@
     </div>
     <div class="row">
         <div class="col-md-2 col-lg-2" style="background-color: #F6F4F0;height: 90%;">
-            <ul class="nav nav-tabs nav-stacked">
-                <li>
-                    <a href="#">首页</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">系统管理</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="jsp/system_manage/sys_people_insert.jsp" target="right">人员录入</a>
-                        </li>
-                        <li>
-                            <a href="jsp/system_manage/sys_people.jsp" target="right">人员管理</a>
-                        </li>
-                        <li>
-                            <a href="#">角色管理</a>
-                        </li>
-                        <li>
-                            <a href="#">权限管理</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">信息</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">操作</a>
-                        </li>
-                        <li>
-                            <a href="#">设置栏目</a>
-                        </li>
-                        <li>
-                            <a href="#">更多设置</a>
-                        </li>
-                        <li>
-                            <a href="#">分割线</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="panel-group" id="panel-731035">
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#panel-731035"
+                       href="#panel-element-881532">
+                        <div class="panel-heading bg-success">
+                            系统管理
+                        </div>
+                    </a>
+                    <div id="panel-element-881532" class="panel-collapse">
+                        <a href="jsp/system_manage/sys_people_insert.jsp" target="right">
+                            <div class="panel-body">人员录入</div>
+                        </a>
+                        <a href="jsp/system_manage/sys_people.jsp" target="right">
+                            <div class="panel-body">人员管理</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#panel-731035" href="#panel-element-757284">
+                        <div class="panel-heading">
+                            111
+                        </div>
+                    </a>
+                    <div id="panel-element-757284" class="panel-collapse collapse">
+                        <div class="panel-body">111</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-10 col-lg-10">
-            <iframe  width="100%" height="90%" scrolling="no" frameborder="0" name="right"></iframe>
+            <br/>
+            <iframe width="100%" height="89%" scrolling="no" frameborder="0" name="right"></iframe>
         </div>
     </div>
 </div>
