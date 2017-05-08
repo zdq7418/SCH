@@ -34,16 +34,16 @@
                 </div>
                 <div class="form-group">
                     <label for="login_password1">密码：</label><input type="password" class="form-control"
-                                                                         id="login_password1" placeholder="请输入密码"/>
+                                                                   id="login_password1" placeholder="请输入密码"/>
                 </div>
                 <div class="form-group">
                     <label for="login_password2">确认密码：</label><input type="password" class="form-control"
-                                                                         id="login_password2" placeholder="请再输入密码"/>
+                                                                     id="login_password2" placeholder="请再输入密码"/>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" id="is_teacher" />是否是教师</label>
                 </div>
-                <button type="button" class="btn btn-default btn-lg center-block" onclick="clickSubmit();">提交</button>
+                <button type="button" class="btn btn-default btn-lg center-block" onclick="clickSubmit();">保存</button>
             </form>
         </div>
     </div>
