@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="login" class="com.lw.action.LoginAction">
+            <result name="success">/index.jsp</result>
+            <result name="failure">/Login.jsp</result>
+        </action>
+        <action name="personnel" class="com.lw.action.PersonnelAction">
+
+        </action>
+    </package>
+    <!--<package name="json" extends="json-default">-->
+        <!--<action name="personnel" class="com.lw.action.PersonnelAction">-->
+            <!--&lt;!&ndash;<result type="json">s</result>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="failure">/Login.jsp</result>&ndash;&gt;-->
+        <!--</action>-->
+    <!--</package>-->
+</struts>    

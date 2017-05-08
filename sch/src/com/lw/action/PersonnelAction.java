@@ -38,12 +38,17 @@ public class PersonnelAction {
     public String overdue() throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         String loginId = request.getParameter("loginId");
-        if (null == loginId || "".equals(loginId)) {
+        String bs = request.getParameter("bs");
+        if (null == loginId || "".equals(loginId) || null == bs || "".equals(bs)) {
             response.getWriter().write("0");
             return null;
         }
         LwOptLogin optLogin = loginSerivce.findById(Integer.valueOf(loginId));
-        optLogin.setIsUse("0");
+        if (bs.equals("1")) {
+            optLogin.setLoginPaw("123456");
+        } else {
+            optLogin.setIsUse("0");
+        }
         loginSerivce.updateLogin(optLogin);
         response.getWriter().write("1");
         return null;
@@ -51,23 +56,23 @@ public class PersonnelAction {
 
     public String savePersonnel() throws Exception {
         response.setContentType("text/html;charset=UTF-8");
+        String loginPassword = request.getParameter("loginPassword");
         String peopleName = request.getParameter("peopleName");
         String loginName = request.getParameter("loginName");
         String loginSex = request.getParameter("loginSex");
-        String loginPassword = request.getParameter("loginPassword");
         String isTeacher = request.getParameter("isTeacher");
         List loginNameList = loginSerivce.findByLoginName(loginName);
-        if(null != loginNameList && loginNameList.size()>0){
+        if (null != loginNameList && loginNameList.size() > 0) {
             response.getWriter().write("0");
             return null;
         }
-        LwOptPersonnel lwOptPersonnel=new LwOptPersonnel();
+        LwOptPersonnel lwOptPersonnel = new LwOptPersonnel();
         lwOptPersonnel.setPersonnelName(peopleName);
         lwOptPersonnel.setPersonnelSex(loginSex);
         lwOptPersonnel.setInductionDate(DateUtil.getTimestamp());
         lwOptPersonnel.setIsUse("1");
         lwOptPersonnel.setIsTeacher(Integer.valueOf(isTeacher));
-        LwOptLogin lwOptLogin=new LwOptLogin();
+        LwOptLogin lwOptLogin = new LwOptLogin();
         lwOptLogin.setLwOptPersonnel(lwOptPersonnel);
         lwOptLogin.setLoginName(loginName);
         lwOptLogin.setLoginPaw(loginPassword);
@@ -77,11 +82,30 @@ public class PersonnelAction {
         response.getWriter().write("1");
         return null;
     }
-    public String checkLoginName() throws Exception{
+
+    public String updatePersonnel() throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        String loginId = request.getParameter("loginId");
+        String peopleName = request.getParameter("peopleName");
+        String loginName = request.getParameter("loginName");
+        String loginSex = request.getParameter("loginSex");
+        String isTeacher = request.getParameter("isTeacher");
+        LwOptLogin optLogin = loginSerivce.findById(Integer.valueOf(loginId));
+        optLogin.getLwOptPersonnel().setPersonnelName(peopleName);
+        optLogin.getLwOptPersonnel().setPersonnelSex(loginSex);
+        optLogin.getLwOptPersonnel().setIsTeacher(Integer.valueOf(isTeacher));
+        optLogin.setLoginName(loginName);
+        optLogin.setLoginId(Integer.valueOf(loginId));
+        loginSerivce.updateLogin(optLogin);
+        response.getWriter().write("1");
+        return null;
+    }
+
+    public String checkLoginName() throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         String loginName = request.getParameter("loginName");
         List loginNameList = loginSerivce.findByLoginName(loginName);
-        if(loginNameList!=null && loginNameList.size()>0){
+        if (loginNameList != null && loginNameList.size() > 0) {
             response.getWriter().write("0");
             return null;
         }

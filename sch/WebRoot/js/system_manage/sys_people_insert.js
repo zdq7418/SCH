@@ -55,17 +55,19 @@ function clickSubmit() {
         },
         success:function(data){
             if(data==0){
-                togglebox("用户名存在","login_name");
-            }else{
+                togglebox("用户名存在！","login_name");
+            }else if(data==1){
                 alert("保存成功");
                 $("#people_name").val("");
                 $("#login_name").val("");
                 $("#login_password1").val("");
                 $("#login_password2").val("");
+            }else{
+                alert("参数错误！");
             }
         },
         error:function(){
-            togglebox("未知错误！","update_"+value);
+            alert("未知错误！");
         }
     });
     return true;

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--注解方式-->
+    <context:component-scan base-package="com"/>
+    <!--数据源-->
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"
+                  value="com.mysql.jdbc.Driver">
+        </property>
+        <property name="url" value="jdbc:mysql://localhost:3306/sms"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="do*" read-only="false" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" read-only="false" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="save*" read-only="false" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" read-only="false" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config proxy-target-class="true">
+        <aop:advisor pointcut="execution(* com.lw.serivce..*ServiceImpl.*(..))" advice-ref="txAdvice"/>
+    </aop:config>
+    <!--sessionFactory配置-->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.MySQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/lw/bean/LwOptDepartment.hbm.xml</value>
+                <value>com/lw/bean/LwOptRoom.hbm.xml</value>
+                <value>com/lw/bean/LwOptCredit.hbm.xml</value>
+                <value>com/lw/bean/LwOptRole.hbm.xml</value>
+                <value>com/lw/bean/LwOptClass.hbm.xml</value>
+                <value>com/lw/bean/LwOptFraction.hbm.xml</value>
+                <value>com/lw/bean/LwOptLogin.hbm.xml</value>
+                <value>com/lw/bean/LwOptCurriculumStudents.hbm.xml</value>
+                <value>com/lw/bean/LwOptRoleResource.hbm.xml</value>
+                <value>com/lw/bean/LwOptPersonnelClass.hbm.xml</value>
+                <value>com/lw/bean/LwOptPersonnelRole.hbm.xml</value>
+                <value>com/lw/bean/LwOptFloor.hbm.xml</value>
+                <value>com/lw/bean/LwOptCurriculum.hbm.xml</value>
+                <value>com/lw/bean/LwOptMansion.hbm.xml</value>
+                <value>com/lw/bean/LwOptResource.hbm.xml</value>
+                <value>com/lw/bean/LwOptPersonnel.hbm.xml</value></list>
+        </property>
+    </bean>
+    <bean id="LwOptDepartmentDAO"
+          class="com.lw.dao.LwOptDepartmentDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptRoomDAO" class="com.lw.dao.LwOptRoomDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptCreditDAO" class="com.lw.dao.LwOptCreditDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptRoleDAO" class="com.lw.dao.LwOptRoleDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptClassDAO" class="com.lw.dao.LwOptClassDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptFractionDAO" class="com.lw.dao.LwOptFractionDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptLoginDAO" class="com.lw.dao.LwOptLoginDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptCurriculumStudentsDAO"
+          class="com.lw.dao.LwOptCurriculumStudentsDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptRoleResourceDAO"
+          class="com.lw.dao.LwOptRoleResourceDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptPersonnelClassDAO"
+          class="com.lw.dao.LwOptPersonnelClassDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptPersonnelRoleDAO"
+          class="com.lw.dao.LwOptPersonnelRoleDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptFloorDAO" class="com.lw.dao.LwOptFloorDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptCurriculumDAO"
+          class="com.lw.dao.LwOptCurriculumDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptMansionDAO" class="com.lw.dao.LwOptMansionDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptResourceDAO" class="com.lw.dao.LwOptResourceDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="LwOptPersonnelDAO"
+          class="com.lw.dao.LwOptPersonnelDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+</beans>
