@@ -10,6 +10,9 @@
         <action name="personnel" class="com.lw.action.PersonnelAction">
 
         </action>
+        <action name="resources" class="com.lw.action.ResourcesAction">
+
+        </action>
     </package>
     <!--<package name="json" extends="json-default">-->
         <!--<action name="personnel" class="com.lw.action.PersonnelAction">-->

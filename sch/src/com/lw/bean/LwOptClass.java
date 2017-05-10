@@ -15,7 +15,7 @@ public class LwOptClass implements java.io.Serializable {
 	private String className;
 	private String classDepartment;
 	private Integer classNumber;
-	private Set lwOptPersonnelClasses = new HashSet(0);
+	private transient Set lwOptPersonnelClasses = new HashSet(0);
 
 	// Constructors
 
