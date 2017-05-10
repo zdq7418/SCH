@@ -14,7 +14,7 @@ public class LwOptCurriculum implements java.io.Serializable {
 	private Integer curriculumId;
 	private String curriculumName;
 	private Double curriculumCredit;
-	private Set lwOptCurriculumStudentses = new HashSet(0);
+	private transient Set lwOptCurriculumStudentses = new HashSet(0);
 
 	// Constructors
 

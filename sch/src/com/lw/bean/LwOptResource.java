@@ -15,7 +15,7 @@ public class LwOptResource implements java.io.Serializable {
 	private String resourceName;
 	private Integer resourceParent;
 	private String resourcePath;
-	private Set lwOptRoleResources = new HashSet(0);
+	private transient Set lwOptRoleResources = new HashSet(0);
 
 	// Constructors
 

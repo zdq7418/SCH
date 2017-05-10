@@ -14,8 +14,8 @@ public class LwOptRole implements java.io.Serializable {
 	private Integer roleId;
 	private String roleName;
 	private String roleIntroduce;
-	private Set lwOptRoleResources = new HashSet(0);
-	private Set lwOptPersonnelRoles = new HashSet(0);
+	private transient Set lwOptRoleResources = new HashSet(0);
+	private transient Set lwOptPersonnelRoles = new HashSet(0);
 
 	// Constructors
 
