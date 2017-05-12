@@ -48,6 +48,9 @@
                         <a href="jsp/system_manage/sys_people.jsp" target="right">
                             <div class="panel-body">人员管理</div>
                         </a>
+                        <a href="jsp/system_manage/sys_role.jsp" target="right">
+                            <div class="panel-body">角色管理</div>
+                        </a>
                         <a href="jsp/system_manage/sys_resources.jsp" target="right">
                             <div class="panel-body">资源管理</div>
                         </a>
