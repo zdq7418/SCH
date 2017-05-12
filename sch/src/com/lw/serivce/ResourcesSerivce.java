@@ -20,4 +20,7 @@ public class ResourcesSerivce {
     public List findAll() throws Exception {
         return lwOptResourceDAO.findAll();
     }
+    public List findAllbyxx(Integer id) throws Exception {
+        return lwOptResourceDAO.findByProperty("resourceParent",id);
+    }
 }

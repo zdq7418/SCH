@@ -4,7 +4,7 @@
  * @version 0.1
  */
 function initTable() {
-    var queryUrl = 'resources!findAll.action';
+    var queryUrl = 'role!findAll.action';
     $('#para_table').bootstrapTable('destroy');
     $table = $('#para_table').bootstrapTable({
         method: 'post',
@@ -19,33 +19,27 @@ function initTable() {
         showColumns: false, //不显示下拉框（选择显示的列）
         sidePagination: "client", //客户端请求
         columns: [{
-            field: 'resourceName',
-            title: '资源名称',
+            field: 'roleName',
+            title: '角色名称',
             width: 100,
             align: 'center',
             sortable: true
         }, {
-            field: 'resourceParent',
-            title: '父节点',
+            field: 'roleIntroduce',
+            title: '角色描述',
             width: 100,
-            align: 'center',
-            sortable: true
-        }, {
-            field: 'resourcePath',
-            title: '地址',
-            width: 200,
             align: 'center',
             sortable: true
         },{
-            field: 'resourceId',
+            field: 'roleId',
             title: '操作',
             width: 140,
-            align: 'center'
-            // formatter: function (value, row, index) {
-            //     var e = '<button id="reset_pad_' + value + '" type="button" class="btn btn-default  btn-xs" style="margin-right:15px;" onclick="update_isuse(' + value + ',1)">重置密码</button>';
-            //     var d = '<button id="update_' + value + '" type="button" class="btn btn-default  btn-xs"  style="margin-right:15px;" onclick="update_isuse(' + value + ',2)">过期</a> ';
-            //     return e + d;
-            // }
+            align: 'center',
+            formatter: function (value, row, index) {
+                var e = '<button id="reset_pad_' + value + '" type="button" class="btn btn-default  btn-xs" style="margin-right:15px;" onclick="selectResources(' + value + ')">角色权限修改</button>';
+                // var d = '<button id="update_' + value + '" type="button" class="btn btn-default  btn-xs"  style="margin-right:15px;" onclick="update_isuse(' + value + ',2)">过期</a> ';
+                return e ;
+            }
         }],
         // onDblClickRow: function (row, $element, id) {
         //     $("#people_name").val(row.lwOptPersonnel.personnelName)
@@ -71,7 +65,6 @@ function initTable() {
         }
     });
 }
-
 function selectuserinfo() {
     initTable();
 }
@@ -83,21 +76,21 @@ function togglebox(info, name) {
         $("#" + name).popover('destroy');
     }, 2000);
 }
-//
-// function blurLoginName() {
-//     var login_name = $("#login_name").val().trim();
-//     $.ajax({
-//         url: "personnel!checkLoginName.action",
-//         type: "POST",
-//         dataType: "json",
-//         data: {
-//             "loginName": login_name,
-//         },
-//         success: function (data) {
-//             if (data == 0) {
-//                 togglebox("用户名存在", "login_name");
-//                 $("#login_name").val("");
-//             }
-//         }
-//     });
-// }
+
+function selectResources(id) {
+    $.ajax({
+        url: "role!selectRessourcesByRole.action",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "id": id,
+        },
+        success: function (data) {
+            
+            $('#select_per').modal('show');
+        },
+        error:function(){
+            alert("未知错误！");
+        }
+    });
+}
