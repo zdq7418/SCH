@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -112,4 +113,18 @@ public class PersonnelAction {
         response.getWriter().write("1");
         return null;
     }
+
+    public void findBuyKey() throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String key = request.getParameter("key");
+       String hql="from LwOptLogin as a where 1=1 and a.lwOptPersonnel.personnelName like '%"+key+"%' or a.loginName like '%"+key+"%'";
+       List list=loginSerivce.findByHql(hql);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy.MM.dd HH:mm:ss").create();
+        String s = gson.toJson(list);
+        response.getWriter().write(s);
+
+    }
+
+
+
 }
