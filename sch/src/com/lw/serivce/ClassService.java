@@ -1,6 +1,8 @@
 package com.lw.serivce;
 
+import com.lw.bean.LwOptClass;
 import com.lw.bean.LwOptDepartment;
+import com.lw.dao.LwOptClassDAO;
 import com.lw.dao.LwOptDepartmentDAO;
 import com.lw.dao.LwOptLoginDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,25 +12,25 @@ import java.util.List;
 /**
  * Created by ThundeRobot on 2017/5/13.
  */
-public class DepartmentService {
+public class ClassService {
     @Autowired
-    private LwOptDepartmentDAO lwOptDepartmentDAO;
+    private LwOptClassDAO lwOptClassDAO;
     @Autowired
     private LwOptLoginDAO lwOptLoginDAO;
 
     public List findAll(){
-        return lwOptDepartmentDAO.findAll();
+        return lwOptClassDAO.findAll();
     }
 
-    public void save(LwOptDepartment lwOptDepartment){
-        lwOptDepartmentDAO.save(lwOptDepartment);
+    public void save(LwOptClass lwOptDepartment){
+        lwOptClassDAO.save(lwOptDepartment);
     }
 
-    public void saveOrUpdate(LwOptDepartment lwOptDepartment){
-        lwOptDepartmentDAO.attachDirty(lwOptDepartment);
+    public void saveOrUpdate(LwOptClass lwOptDepartment){
+        lwOptClassDAO.attachDirty(lwOptDepartment);
     }
-    public void delete(LwOptDepartment lwOptDepartment){
-        lwOptDepartmentDAO.delete(lwOptDepartment);
+    public void delete(LwOptClass lwOptDepartment){
+        lwOptClassDAO.delete(lwOptDepartment);
     }
 
     public List findByHql(String hql){
