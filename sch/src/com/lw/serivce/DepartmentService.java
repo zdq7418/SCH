@@ -38,7 +38,7 @@ public class DepartmentService {
     }
 
     public List findByP(String p,Object s){
-        return lwOptDepartmentDAO.findByProperty(p,s);
+        return lwOptDepartmentDAO.findByPropertyLike(p,s);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.lw.action;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.lw.bean.LwOptClass;
 import com.lw.bean.LwOptDepartment;
 import com.lw.serivce.ClassService;
@@ -39,17 +41,19 @@ public class ClassAction {
         ResporeUtil.write(response,"1");
     }
 
+
+
     public void saveOrUpCla() throws IOException {
         String id=ResporeUtil.getPram(request,"id");
         String name=ResporeUtil.getPram(request,"name");
         String number=ResporeUtil.getPram(request,"number");
-        String department=ResporeUtil.getPram(request,"department");
+        String departmentId=ResporeUtil.getPram(request,"departmentId");
         LwOptClass lw=new LwOptClass();
         lw.setClassId(Integer.parseInt(id));
         lw.setClassName(name);
         lw.setClassNumber(Integer.parseInt(number));
-        lw.setClassDepartment(department);
-        classService.save(lw);
+        lw.setClassDepartment(departmentId);
+        classService.saveOrUpdate(lw);
         ResporeUtil.write(response,"1");
     }
 
@@ -57,9 +61,17 @@ public class ClassAction {
         String id=ResporeUtil.getPram(request,"id");
         LwOptClass lw=new LwOptClass();
         lw.setClassId(Integer.parseInt(id));
-        classService.saveOrUpdate(lw);
+        classService.delete(lw);
         ResporeUtil.write(response,"1");
     }
+
+    public void findClaByKey() throws IOException {
+        String key = ResporeUtil.getPram(request,"key");
+        List list=classService.findByP("className",key);
+        String s = ResporeUtil.gson.toJson(list);
+        ResporeUtil.write(response,s);
+    }
+
 
 
 

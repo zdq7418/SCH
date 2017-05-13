@@ -51,13 +51,13 @@ public class DepartmentAction {
         String id=ResporeUtil.getPram(request,"id");
         LwOptDepartment lw=new LwOptDepartment();
         lw.setDepartmentId(Integer.parseInt(id));
-        departmentService.saveOrUpdate(lw);
+        departmentService.delete(lw);
         ResporeUtil.write(response,"1");
     }
 
     public void findByName() throws IOException {
         String name=ResporeUtil.getPram(request,"name");
-        List list=departmentService.findByP("",name);
+        List list=departmentService.findByP("departmentName",name);
         ResporeUtil.write(response,ResporeUtil.gson.toJson(list));
     }
 

@@ -39,4 +39,8 @@ public class ClassService {
         return lwOptLoginDAO.findByHql(hql);
     }
 
+    public List findByP(String s,Object o){
+        return lwOptClassDAO.findByPropertyLike(s,o);
+    }
+
 }
