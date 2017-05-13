@@ -4,12 +4,14 @@ import com.lw.bean.LwOptDepartment;
 import com.lw.dao.LwOptDepartmentDAO;
 import com.lw.dao.LwOptLoginDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by ThundeRobot on 2017/5/13.
  */
+@Service
 public class DepartmentService {
     @Autowired
     private LwOptDepartmentDAO lwOptDepartmentDAO;
@@ -33,6 +35,10 @@ public class DepartmentService {
 
     public List findByHql(String hql){
         return lwOptLoginDAO.findByHql(hql);
+    }
+
+    public List findByP(String p,Object s){
+        return lwOptDepartmentDAO.findByProperty(p,s);
     }
 
 }

@@ -6,12 +6,14 @@ import com.lw.dao.LwOptClassDAO;
 import com.lw.dao.LwOptDepartmentDAO;
 import com.lw.dao.LwOptLoginDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by ThundeRobot on 2017/5/13.
  */
+@Service
 public class ClassService {
     @Autowired
     private LwOptClassDAO lwOptClassDAO;
