@@ -4,6 +4,7 @@ package com.lw.action;/**
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lw.bean.LwOptResource;
 import com.lw.serivce.ResourcesSerivce;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,27 @@ public class ResourcesAction {
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write(s);
         return null;
+    }
+    public void attachDirty() throws Exception {
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String select = request.getParameter("select");
+        String dizi = request.getParameter("dizi");
+        if(id==null || "".equals(id)){
+            LwOptResource lwOptResource = new LwOptResource();
+            lwOptResource.setResourceName(name);
+            lwOptResource.setResourceParent(Integer.valueOf(select));
+            lwOptResource.setResourcePath(dizi);
+            resourcesSerivce.updateResource(lwOptResource);
+            response.getWriter().write("2");
+            return;
+        }
+        LwOptResource lwOptResource = resourcesSerivce.findById(Integer.valueOf(id));
+        lwOptResource.setResourceName(name);
+        lwOptResource.setResourceParent(Integer.valueOf(select));
+        lwOptResource.setResourcePath(dizi);
+        resourcesSerivce.updateResource(lwOptResource);
+        response.getWriter().write("1");
     }
 
 }

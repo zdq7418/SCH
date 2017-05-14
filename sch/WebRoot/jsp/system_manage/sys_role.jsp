@@ -25,9 +25,10 @@
                 <c:forEach items="${listres}" var="listres">
                     <div class="checkbox">
                         <label>
-                            <c:forEach items="${list}" var="lisy">
-
-                            </c:forEach>
+                            <%--<% boolean aa =false; %>--%>
+                            <%--<c:forEach items="${list}" var="lisy">--%>
+                                <%--<c:if test="${listres.resourceId==lisy.resourceId}"><% aa=true; break;%></c:if>--%>
+                            <%--</c:forEach>--%>
                             <input type="checkbox" value="${listres.resourceId}">${listres.resourceName}
                         </label>
                     </div>

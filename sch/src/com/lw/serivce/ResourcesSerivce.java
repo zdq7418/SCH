@@ -2,6 +2,7 @@ package com.lw.serivce;/**
  * Created by Administrator on 2017/5/8.
  */
 
+import com.lw.bean.LwOptResource;
 import com.lw.dao.LwOptResourceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,10 @@ public class ResourcesSerivce {
     }
     public List findAllbyxx(Integer id) throws Exception {
         return lwOptResourceDAO.findByProperty("resourceParent",id);
+    }
+    public void updateResource(LwOptResource lwOptResource) throws Exception {lwOptResourceDAO.attachDirty(lwOptResource);}
+
+    public LwOptResource findById(Integer id) throws Exception{
+       return lwOptResourceDAO.findById(id);
     }
 }
