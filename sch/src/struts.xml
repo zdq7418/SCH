@@ -17,6 +17,10 @@
         </action>
         <action name="clas" class="com.lw.action.ClassAction">
         </action>
+        <action name="curr" class="com.lw.action.CurriculumAction">
+        </action>
+        <action name="currstu" class="com.lw.action.CurriculumStudentAction">
+        </action>
     </package>
     <!--<package name="json" extends="json-default">-->
         <!--<action name="personnel" class="com.lw.action.PersonnelAction">-->

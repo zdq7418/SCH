@@ -7,7 +7,9 @@ import com.google.gson.GsonBuilder;
 import com.lw.bean.LwOptLogin;
 import com.lw.bean.LwOptPersonnel;
 import com.lw.serivce.LoginSerivce;
+import com.lw.serivce.PersonnelSerivce;
 import com.lw.util.DateUtil;
+import com.lw.util.ResporeUtil;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +26,8 @@ import java.util.List;
 public class PersonnelAction {
     @Autowired
     private LoginSerivce loginSerivce;
+    @Autowired
+    private PersonnelSerivce personnelSerivce;
     private HttpServletResponse response = ServletActionContext.getResponse();
     private HttpServletRequest request = ServletActionContext.getRequest();
 
@@ -34,6 +38,10 @@ public class PersonnelAction {
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write(s);
         return null;
+    }
+
+    public void findAllPer() throws IOException {
+        ResporeUtil.write(response,ResporeUtil.gson.toJson(personnelSerivce.findAll()));
     }
 
     public String overdue() throws Exception {
