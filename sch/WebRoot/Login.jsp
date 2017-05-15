@@ -7,12 +7,12 @@
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <!--[if IE]>
-    <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
-    <![endif]-->
-    <script language="javascript" type="text/javascript"
-            src="http://202.102.100.100/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script>
-    <script type="text/javascript">
-        hQGHuMEAyLn('.adsbygoogle,.fdad,.inner > .add');</script>
+    <!--<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>-->
+    <%--<![endif]-->--%>
+    <%--<script language="javascript" type="text/javascript"--%>
+            <%--src="http://202.102.100.100/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script>--%>
+    <%--<script type="text/javascript">--%>
+        <%--hQGHuMEAyLn('.adsbygoogle,.fdad,.inner > .add');</script>--%>
 </head>
 <body>
 
@@ -61,7 +61,7 @@
 </div>
 
 <script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
-<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script>
     $('input[type="submit"]').click(function () {
